@@ -6,7 +6,9 @@ const Appointment = require("../models/appointmentModel");
 
 const getuser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).select("-password");
+    console.log("first");
+    const user = await User.findById(req.params.id);
+    console.log(user);
     return res.send(user);
   } catch (error) {
     res.status(500).send("Unable to get user");
