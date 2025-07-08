@@ -8,7 +8,7 @@ import { setUserInfo } from "../redux/reducers/rootSlice";
 import jwt_decode from "jwt-decode";
 import fetchData from "../helper/apiCall";
 
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
 
 function Login() {
   const dispatch = useDispatch();
@@ -70,10 +70,7 @@ function Login() {
     <section className="register-section flex-center">
       <div className="register-container flex-center">
         <h2 className="form-heading">Sign In</h2>
-        <form
-          onSubmit={formSubmit}
-          className="register-form"
-        >
+        <form onSubmit={formSubmit} className="register-form">
           <input
             type="email"
             name="email"
@@ -90,19 +87,13 @@ function Login() {
             value={formDetails.password}
             onChange={inputChange}
           />
-          <button
-            type="submit"
-            className="btn form-btn"
-          >
+          <button type="submit" className="btn form-btn">
             sign in
           </button>
         </form>
         <p>
           Not a user?{" "}
-          <NavLink
-            className="login-link"
-            to={"/register"}
-          >
+          <NavLink className="login-link" to={"/register"}>
             Register
           </NavLink>
         </p>
